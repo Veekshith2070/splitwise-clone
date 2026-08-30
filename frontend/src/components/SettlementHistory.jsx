@@ -12,7 +12,7 @@ function SettlementHistory({ groupId, refreshKey }) {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `http://localhost:5000/api/groups/settlements/${groupId}/history`,
+        `${API_BASE_URL}/api/groups/settlements/${groupId}/history`,
         {
           headers: {
             Authorization: `Bearer ${token}`

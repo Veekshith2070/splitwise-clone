@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
+import API_BASE_URL from "../services/api";
 import AddExpense from "../components/AddExpense";
 import AddMember from "../components/AddMember";
 import RecordSettlement from "../components/RecordSettlement";
@@ -41,27 +41,27 @@ function GroupDetails() {
         settlementsResponse
       ] = await Promise.all([
         axios.get(
-          `http://localhost:5000/api/groups/${groupId}`,
+          `${API_BASE_URL}/api/groups/${groupId}`,
           config
         ),
 
         axios.get(
-          `http://localhost:5000/api/groups/${groupId}/members`,
+          `${API_BASE_URL}/api/groups/${groupId}/members`,
           config
         ),
 
         axios.get(
-          `http://localhost:5000/api/groups/${groupId}/expenses`,
+          `${API_BASE_URL}/api/groups/${groupId}/expenses`,
           config
         ),
 
         axios.get(
-          `http://localhost:5000/api/groups/balances/${groupId}`,
+          `${API_BASE_URL}/api/groups/balances/${groupId}`,
           config
         ),
 
         axios.get(
-          `http://localhost:5000/api/groups/settlements/${groupId}`,
+          `${API_BASE_URL}/api/groups/settlements/${groupId}`,
           config
         )
       ]);

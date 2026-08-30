@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../services/api";
 
 function PendingSettlements({ groupId, onSettlementUpdated }) {
   const [settlements, setSettlements] = useState([]);
@@ -23,7 +24,7 @@ function PendingSettlements({ groupId, onSettlementUpdated }) {
   const fetchPendingSettlements = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/groups/settlements/${groupId}/pending`,
+        `${API_BASE_URL}/api/groups/settlements/${groupId}/pending`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -54,7 +55,7 @@ function PendingSettlements({ groupId, onSettlementUpdated }) {
       setMessage("");
 
       const response = await axios.patch(
-        `http://localhost:5000/api/groups/settlements/${id}/accept`,
+        `${API_BASE_URL}/api/groups/settlements/${id}/accept`,
         {},
         {
           headers: {
@@ -84,7 +85,7 @@ function PendingSettlements({ groupId, onSettlementUpdated }) {
       setMessage("");
 
       const response = await axios.patch(
-        `http://localhost:5000/api/groups/settlements/${id}/reject`,
+        `${API_BASE_URL}/api/groups/settlements/${id}/reject`,
         {},
         {
           headers: {

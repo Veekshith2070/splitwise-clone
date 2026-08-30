@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../services/api";
 
 function AddMember({ groupId, onMemberAdded }) {
   const [users, setUsers] = useState([]);
@@ -23,7 +24,7 @@ function AddMember({ groupId, onMemberAdded }) {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `http://localhost:5000/api/users/search?q=${encodeURIComponent(value)}`,
+        `${API_BASE_URL}/api/users/search?q=${encodeURIComponent(value)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -54,7 +55,7 @@ function AddMember({ groupId, onMemberAdded }) {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        `http://localhost:5000/api/groups/${groupId}/members`,
+        `API_BASE_URL/api/groups/${groupId}/members`,
         {
           userId: selectedUser.id
         },

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../services/api";
 
 function AddExpense({ groupId, members, onExpenseAdded }) {
   const [description, setDescription] = useState("");
@@ -102,7 +103,7 @@ function AddExpense({ groupId, members, onExpenseAdded }) {
       }
 
       await axios.post(
-        "http://localhost:5000/api/expenses",
+        `${API_BASE_URL}/api/expenses`,
         {
           groupId: Number(groupId),
           description,

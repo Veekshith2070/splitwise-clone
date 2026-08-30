@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../services/api";
 
 function RecordSettlement({
   groupId,
@@ -107,7 +108,7 @@ function RecordSettlement({
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/groups/settlements",
+        `${API_BASE_URL}/api/groups/settlements`,
         {
           groupId: Number(groupId),
           toUser: Number(selectedUser),
